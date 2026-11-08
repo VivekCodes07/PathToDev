@@ -38,7 +38,7 @@ export const Contact: React.FC<ContactProps> = ({ selectedServiceTitle, onOpenPa
                 Have a quick dilemma, want to confirm slot availability, or prefer sending your details directly? Message us on WhatsApp.
               </p>
               <a
-                href={getWhatsAppUrl(PREFILLED_MESSAGES.general)}
+                href={getWhatsAppUrl(PREFILLED_MESSAGES.serviceEnquiry)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors shadow-sm"

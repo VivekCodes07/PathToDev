@@ -91,7 +91,7 @@ export const HowItWorks: React.FC = () => {
 
             {/* Secondary Action: WhatsApp */}
             <a
-              href={getWhatsAppUrl(PREFILLED_MESSAGES.general)}
+              href={getWhatsAppUrl(PREFILLED_MESSAGES.quickQuestion)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2"

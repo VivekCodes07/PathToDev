@@ -10,10 +10,10 @@ export const SITE_CONFIG = {
   officialEmail: "hello.pathtodev@gmail.com",
   
   // WhatsApp Configuration:
-  // Placeholder indicator: Leave empty or set to valid phone number with country code (e.g., '919876543210')
-  // When empty or placeholder, user is guided via friendly placeholder UI.
-  WHATSAPP_NUMBER: "", // Set by owner, e.g., "91XXXXXXXXXX"
-  isWhatsAppConfigured: false, // Set to true when actual business number is provided
+  WHATSAPP_NUMBER: "916201766193",
+  WHATSAPP_DISPLAY: "+91 62017 66193",
+  WHATSAPP_BASE_URL: "https://wa.me/916201766193",
+  isWhatsAppConfigured: true,
 
   // Social Media Links (Set actual URLs when available; leave empty to keep cleanly disabled)
   socials: {
@@ -57,25 +57,22 @@ export const SITE_CONFIG = {
 };
 
 /**
- * Builds a direct WhatsApp chat URL with encoded pre-filled text.
- * Falls back to web or mailto when WhatsApp is in placeholder mode.
+ * Builds a direct WhatsApp chat URL with properly encoded pre-filled text.
+ * Strictly uses the official WhatsApp URL (https://wa.me/916201766193).
  */
 export function getWhatsAppUrl(customMessage?: string): string {
-  const number = SITE_CONFIG.WHATSAPP_NUMBER.replace(/[^0-9]/g, "");
-  const defaultText = "Hello PathToDev, I would like to know more about your services.";
-  const text = encodeURIComponent(customMessage || defaultText);
-
-  if (!number || !SITE_CONFIG.isWhatsAppConfigured) {
-    // If WhatsApp number is not yet configured, provide a mailto or placeholder indicator URL
-    return `mailto:${SITE_CONFIG.officialEmail}?subject=${encodeURIComponent("PathToDev Guidance Enquiry")}&body=${text}`;
-  }
-
-  return `https://wa.me/${number}?text=${text}`;
+  const number = (SITE_CONFIG.WHATSAPP_NUMBER || "916201766193").replace(/[^0-9]/g, "");
+  const defaultText = PREFILLED_MESSAGES.general;
+  const message = customMessage !== undefined ? customMessage : defaultText;
+  const text = encodeURIComponent(message);
+  return `https://wa.me/${number}${text ? `?text=${text}` : ''}`;
 }
 
 export const PREFILLED_MESSAGES = {
-  general: "Hello PathToDev, I would like to know more about your services.",
-  roadmap: "Hello PathToDev, I am interested in the Written Developer Roadmap service.",
-  oneToOne: "Hello PathToDev, I would like to book a One-to-One Guidance Call.",
-  completePackage: "Hello PathToDev, I am interested in the Complete Developer Guidance Package.",
+  general: "Hi PathToDev! I would like to know more about your developer guidance services.",
+  serviceEnquiry: "Hi PathToDev! I am interested in your developer guidance services. Could you please help me?",
+  quickQuestion: "Hi PathToDev! I have a quick question about your services.",
+  roadmap: "Hi PathToDev! I am interested in the Written Developer Roadmap (₹199). Could you please help me with the next steps?",
+  oneToOne: "Hi PathToDev! I would like to book a One-to-One Guidance Call (₹299). Could you please share available slots?",
+  completePackage: "Hi PathToDev! I am interested in the Complete Developer Guidance Package (₹499). Could you please help me get started?",
 };

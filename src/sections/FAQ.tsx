@@ -28,7 +28,7 @@ export const FAQ: React.FC = () => {
           </p>
           <div className="mt-4">
             <a
-              href={getWhatsAppUrl(PREFILLED_MESSAGES.general)}
+              href={getWhatsAppUrl(PREFILLED_MESSAGES.quickQuestion)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-brand-navy text-xs font-bold border border-slate-200 transition-colors shadow-subtle"

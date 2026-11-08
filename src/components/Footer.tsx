@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, MessageCircle, ArrowUpRight, Heart, Shield, FileText } from 'lucide-react';
 import { Logo } from './Logo';
-import { SITE_CONFIG, getWhatsAppUrl } from '../config/site';
+import { SITE_CONFIG, getWhatsAppUrl, PREFILLED_MESSAGES } from '../config/site';
 import { SERVICES } from '../config/services';
 
 interface FooterProps {
@@ -123,13 +123,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               </a>
 
               <a
-                href={getWhatsAppUrl()}
+                href={getWhatsAppUrl(PREFILLED_MESSAGES.general)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-white transition-colors"
+                title={`Chat with PathToDev on WhatsApp (${SITE_CONFIG.WHATSAPP_DISPLAY})`}
               >
                 <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>WhatsApp Guidance</span>
+                <span>WhatsApp: {SITE_CONFIG.WHATSAPP_DISPLAY}</span>
               </a>
             </div>
 

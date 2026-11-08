@@ -77,12 +77,6 @@ export const FloatingWhatsApp: React.FC = () => {
               <ExternalLink className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
             </a>
           </div>
-
-          {!SITE_CONFIG.isWhatsAppConfigured && (
-            <div className="px-3 py-2 bg-amber-50 border-t border-amber-100 text-[10px] text-amber-800 text-center font-medium">
-              Demo mode: Enquiries open email until official WhatsApp number is linked.
-            </div>
-          )}
         </div>
       )}
 

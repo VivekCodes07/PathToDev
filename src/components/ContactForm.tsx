@@ -75,14 +75,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
   };
 
   const handleSendViaWhatsApp = () => {
-    const text = encodeURIComponent(getFormattedSummary());
-    const number = SITE_CONFIG.WHATSAPP_NUMBER.replace(/[^0-9]/g, "");
-    if (!number || !SITE_CONFIG.isWhatsAppConfigured) {
-      // Fallback to mailto
-      window.location.href = `mailto:${SITE_CONFIG.officialEmail}?subject=PathToDev Guidance Requirements&body=${text}`;
-    } else {
-      window.open(`https://wa.me/${number}?text=${text}`, '_blank');
-    }
+    const url = getWhatsAppUrl(getFormattedSummary());
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handleSendViaEmail = () => {

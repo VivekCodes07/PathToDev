@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, QrCode, Copy, Check, ShieldCheck, ArrowRight, AlertCircle, MessageCircle } from 'lucide-react';
-import { SITE_CONFIG, getWhatsAppUrl } from '../config/site';
+import { SITE_CONFIG, getWhatsAppUrl, PREFILLED_MESSAGES } from '../config/site';
 import { ServiceItem } from '../types';
 
 interface PaymentModalProps {
@@ -25,10 +25,10 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   };
 
   const selectedService = service || {
-    title: 'Guidance Service',
+    title: 'Developer Guidance Service',
     price: 199,
     currency: '₹',
-    whatsappMessage: 'Hello PathToDev, I would like to pay for the guidance service.'
+    whatsappMessage: PREFILLED_MESSAGES.serviceEnquiry
   };
 
   return (
