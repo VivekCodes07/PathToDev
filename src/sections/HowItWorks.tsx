@@ -7,6 +7,14 @@ import { getWhatsAppUrl, PREFILLED_MESSAGES } from '../config/site';
 export const HowItWorks: React.FC = () => {
   const stepIcons = [Compass, MessageCircle, FileQuestion, CreditCard, Sparkles];
 
+  const handleScrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="how-it-works" className="section-py bg-brand-blue-light/40 relative border-t border-slate-100">
       <div className="container">
@@ -61,17 +69,37 @@ export const HowItWorks: React.FC = () => {
           </div>
         </div>
 
-        {/* Action Prompt */}
-        <div className="mt-12 text-center">
-          <a
-            href={getWhatsAppUrl(PREFILLED_MESSAGES.general)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:text-brand-blue-hover underline underline-offset-4"
-          >
-            <span>Have a quick question before getting started? Ask us directly on WhatsApp</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+        {/* Final Section CTA */}
+        <div className="mt-14 p-8 sm:p-10 rounded-2xl bg-white border border-slate-200/90 shadow-subtle text-center max-w-2xl mx-auto">
+          <h4 className="text-xl sm:text-2xl font-bold text-brand-navy tracking-tight">
+            Ready to Get Started?
+          </h4>
+          <p className="text-sm text-brand-muted mt-2 max-w-md mx-auto leading-relaxed">
+            Choose the guidance service that matches your current needs.
+          </p>
+
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            {/* Primary Action: Explore Services */}
+            <a
+              href="#services"
+              onClick={handleScrollToServices}
+              className="btn-primary w-full sm:w-auto group inline-flex items-center justify-center gap-2"
+            >
+              <span>Explore Our Services</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </a>
+
+            {/* Secondary Action: WhatsApp */}
+            <a
+              href={getWhatsAppUrl(PREFILLED_MESSAGES.general)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
+              <span>Ask on WhatsApp</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

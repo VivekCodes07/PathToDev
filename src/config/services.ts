@@ -75,32 +75,32 @@ export const HOW_IT_WORKS_STEPS: StepItem[] = [
   {
     number: "01",
     title: "Submit Your Enquiry",
-    description: "Choose your preferred guidance format and submit your details via our website form or WhatsApp.",
-    detail: "Share your college year, current coding background, and main learning blockers."
+    description: "Choose your preferred guidance service and share your college background, current coding knowledge, learning goals, and challenges through our enquiry form or WhatsApp.",
+    detail: "Tell us where you are in your developer journey and what kind of direction you need."
   },
   {
     number: "02",
     title: "Requirements Review",
-    description: "PathToDev reviews your background, target goals, and specific questions to validate the guidance scope.",
-    detail: "Ensures 100% personalized direction tailored to your unique context."
+    description: "We review your background, current knowledge, goals, and specific questions to understand which guidance service best fits your needs.",
+    detail: "Your requirements help us prepare relevant recommendations based on your current learning stage."
   },
   {
     number: "03",
     title: "Service Confirmation",
-    description: "We confirm your guidance requirements or schedule a mutually convenient Google Meet consultation slot.",
-    detail: "Clear communication with no automated bots or rigid scheduling hassles."
+    description: "We confirm your selected service, clarify what is included, and arrange a mutually convenient Google Meet slot when a consultation is part of your package.",
+    detail: "Know exactly what you're purchasing before proceeding with payment."
   },
   {
     number: "04",
     title: "Payment Instructions",
-    description: "Official UPI payment instructions are shared to complete your simple, transparent one-time payment.",
-    detail: "Pay securely via any UPI app (GPay, PhonePe, Paytm, BHIM) with instant confirmation."
+    description: "Once your service is confirmed, we share the official UPI ID or QR code. Complete your one-time payment using your preferred UPI application.",
+    detail: "Payment details are shared directly after enquiry review and service confirmation."
   },
   {
     number: "05",
     title: "Guidance Delivery",
-    description: "Attend your private 30-minute consultation or receive your customized written roadmap within 48 hours.",
-    detail: "Actionable milestones and project recommendations ready for execution."
+    description: "Attend your scheduled 30-minute consultation or receive your personalized written roadmap, depending on the service you selected.",
+    detail: "Written roadmaps are delivered within 48 hours after the required information is received, or within 48 hours after consultation for the Complete Package."
   }
 ];
 
