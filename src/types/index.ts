@@ -8,6 +8,7 @@ export interface ServiceItem {
   deliveryTime: string;
   isFeatured?: boolean;
   featuredBadge?: string;
+  scopeNote?: string;
   description: string;
   features: string[];
   ctaText: string;

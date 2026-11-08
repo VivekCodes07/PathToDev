@@ -28,14 +28,13 @@ export const SITE_CONFIG = {
     upiId: "pathtodev@upi", // Configurable UPI ID placeholder
     merchantName: "PathToDev Guidance",
     qrCodeImage: "", // Path to uploaded UPI QR image asset (e.g., '/images/upi-qr.png')
-    isConfigured: false, // When false, clearly shows "Placeholder / Demo Mode" to prevent accidental transfers
+    isConfigured: false, // When false, indicates payment details are shared upon enquiry confirmation
     instructions: [
-      "Select your preferred guidance service.",
-      "Send us an enquiry on WhatsApp or fill the form with your details.",
-      "Receive service confirmation along with active UPI payment details.",
-      "Complete the payment via any UPI app (GPay, PhonePe, Paytm, BHIM).",
-      "Share screenshot of payment confirmation on WhatsApp.",
-      "Receive your personalized roadmap within 48h or attend your scheduled 1-on-1 call."
+      "Customer submits an enquiry via website form or WhatsApp.",
+      "PathToDev reviews requirements to ensure personalized guidance.",
+      "Customer confirms the service and preferred consultation slot.",
+      "Official UPI payment instructions are shared to complete payment.",
+      "Selected guidance service is delivered within 48h or at the scheduled session."
     ]
   },
 

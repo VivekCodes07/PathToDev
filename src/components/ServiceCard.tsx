@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Clock, Sparkles, ArrowRight, MessageSquare } from 'lucide-react';
+import { Check, Clock, Sparkles, ArrowRight, MessageSquare, Info } from 'lucide-react';
 import { ServiceItem } from '../types';
 import { getWhatsAppUrl } from '../config/site';
 
@@ -81,6 +81,14 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
               </li>
             ))}
           </ul>
+
+          {/* Scope / Inclusions Clarification Note */}
+          {service.scopeNote && (
+            <div className="mt-4 p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 text-[11px] text-slate-600 leading-relaxed flex items-start gap-2">
+              <Info className="w-3.5 h-3.5 text-brand-blue shrink-0 mt-0.5" />
+              <span>{service.scopeNote}</span>
+            </div>
+          )}
         </div>
 
         {/* Action Buttons */}
@@ -120,7 +128,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
               onClick={() => onOpenPaymentInfo && onOpenPaymentInfo(service)}
               className="flex-1 text-center py-2 text-xs font-semibold text-slate-600 hover:text-brand-blue transition-colors"
             >
-              UPI Payment Info
+              Payment Process
             </button>
           </div>
         </div>

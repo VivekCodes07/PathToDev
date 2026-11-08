@@ -19,8 +19,8 @@ export const Services: React.FC<ServicesProps> = ({
       <div className="container">
         <SectionHeading
           badge="Services & Pricing"
-          title="Transparent, Accessible Developer Mentorship"
-          subtitle="Simple, upfront pricing with zero hidden subscriptions. Choose the format that fits your current learning stage best."
+          title="Simple, Affordable Developer Guidance"
+          subtitle="Clear pricing, personalized direction, and practical next steps. Choose the guidance format that fits your current learning stage."
           align="center"
         />
 
@@ -43,9 +43,9 @@ export const Services: React.FC<ServicesProps> = ({
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-brand-navy">100% Upfront & Honest Guidance</h4>
+              <h4 className="text-sm font-bold text-brand-navy">Honest Direction, Zero False Promises</h4>
               <p className="text-xs text-brand-muted mt-0.5">
-                All prices are final. No recurring fees, no surprise upsells, and no false placement claims.
+                PathToDev provides guidance and structured roadmaps. We do not offer coding classes, daily doubt-solving, ongoing chat support, or guaranteed placements.
               </p>
             </div>
           </div>

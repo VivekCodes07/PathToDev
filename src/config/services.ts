@@ -5,20 +5,20 @@ export const SERVICES: ServiceItem[] = [
   {
     id: "written-roadmap",
     title: "Written Developer Roadmap",
-    subtitle: "A clear, tailored learning path crafted for your specific goals.",
+    subtitle: "A personalized, step-by-step learning blueprint tailored to your goals.",
     price: 199,
     currency: "₹",
-    deliveryTime: "Within 48 hours of requirement submission",
+    deliveryTime: "Delivered within 48 hours after receiving details",
     isFeatured: false,
+    scopeNote: "One-time written service. Does not include a consultation call or ongoing support.",
     description: "Get a structured, step-by-step developer roadmap tailored to your background, target stack, and available study hours. Eliminate tutorial confusion completely.",
     features: [
-      "Personalized developer roadmap based on your goals",
-      "Curated recommended technologies & tooling",
-      "Strict step-by-step learning sequence",
-      "Actionable 30-day milestone plan",
-      "Beginner-friendly, portfolio-grade project suggestions",
-      "Digital delivery within 48 hours of submission",
-      "One-time comprehensive written guidance report"
+      "Personalized developer roadmap based on the student's goals",
+      "Recommended technologies and tools",
+      "Step-by-step learning sequence",
+      "Actionable 30-day learning plan",
+      "Beginner-friendly project suggestions",
+      "Digital delivery within 48 hours after receiving all required information"
     ],
     ctaText: "Get This Roadmap",
     whatsappMessage: PREFILLED_MESSAGES.roadmap
@@ -32,15 +32,15 @@ export const SERVICES: ServiceItem[] = [
     duration: "30-minute private session",
     deliveryTime: "Scheduled via Google Meet",
     isFeatured: false,
+    scopeNote: "One-time consultation call. Does not include a personalized written roadmap or ongoing support.",
     description: "Connect face-to-face in a focused 30-minute video session to evaluate your current skillset, pick the best programming path, and get straight answers to your questions.",
     features: [
-      "One 30-minute Google Meet consultation session",
-      "In-depth developer career direction advice",
-      "Programming language & tech stack selection clarity",
-      "Live discussion of your specific blockers & dilemmas",
-      "Clear, actionable next steps for your daily routine",
-      "Objective, realistic feedback on your goals",
-      "One-time focused consultation session"
+      "One private 30-minute Google Meet consultation",
+      "Developer career direction",
+      "Programming language and technology selection guidance",
+      "Discussion of the student's current doubts and blockers",
+      "Clear and actionable next steps",
+      "Realistic feedback based on the student's goals"
     ],
     ctaText: "Book a Guidance Call",
     whatsappMessage: PREFILLED_MESSAGES.oneToOne
@@ -52,18 +52,19 @@ export const SERVICES: ServiceItem[] = [
     price: 499,
     currency: "₹",
     duration: "30-minute call + comprehensive written roadmap",
-    deliveryTime: "Roadmap delivered within 48h of call",
+    deliveryTime: "Roadmap delivered within 48h after consultation",
     isFeatured: true,
-    featuredBadge: "Most Comprehensive Value",
+    featuredBadge: "Recommended Package",
+    scopeNote: "Comprehensive combo: includes live consultation + personalized roadmap + 7-day follow-up.",
     description: "Our complete mentorship experience: discuss your dilemma 1-on-1 first, then receive an extensive custom written roadmap with a 90-day execution framework.",
     features: [
-      "One 30-minute live 1-on-1 Google Meet consultation",
-      "Personalized written developer roadmap document",
-      "Recommended technologies & exact learning sequence",
-      "Structured 90-day progressive action plan",
-      "Strategic project & portfolio recommendations",
-      "One follow-up clarification message within 7 days",
-      "Written roadmap delivered within 48 hours of consultation"
+      "One 30-minute private Google Meet consultation",
+      "Personalized written developer roadmap",
+      "Recommended technologies and learning sequence",
+      "Structured 90-day action plan",
+      "Project and portfolio recommendations",
+      "One follow-up clarification within 7 days",
+      "Written roadmap delivered within 48 hours after the consultation"
     ],
     ctaText: "Choose Complete Package",
     whatsappMessage: PREFILLED_MESSAGES.completePackage
@@ -73,33 +74,33 @@ export const SERVICES: ServiceItem[] = [
 export const HOW_IT_WORKS_STEPS: StepItem[] = [
   {
     number: "01",
-    title: "Explore Services",
-    description: "Browse our 3 distinct guidance options and select the one that matches your current learning needs.",
-    detail: "Choose between a written roadmap, a 30-minute live call, or the all-in-one complete mentorship package."
+    title: "Submit Your Enquiry",
+    description: "Choose your preferred guidance format and submit your details via our website form or WhatsApp.",
+    detail: "Share your college year, current coding background, and main learning blockers."
   },
   {
     number: "02",
-    title: "Contact PathToDev",
-    description: "Reach out via WhatsApp or submit your initial enquiry through our straightforward website form.",
-    detail: "Direct connection with no complex signups or account creation needed."
+    title: "Requirements Review",
+    description: "PathToDev reviews your background, target goals, and specific questions to validate the guidance scope.",
+    detail: "Ensures 100% personalized direction tailored to your unique context."
   },
   {
     number: "03",
-    title: "Share Your Requirements",
-    description: "Tell us about your college year, current coding background, target goals, and what confuses you.",
-    detail: "We send a concise requirements checklist so your guidance is 100% personalized to your exact context."
+    title: "Service Confirmation",
+    description: "We confirm your guidance requirements or schedule a mutually convenient Google Meet consultation slot.",
+    detail: "Clear communication with no automated bots or rigid scheduling hassles."
   },
   {
     number: "04",
-    title: "Complete Payment",
-    description: "We confirm your service and provide simple UPI payment instructions via any UPI app.",
-    detail: "Transparent manual UPI payment with instantaneous confirmation sharing."
+    title: "Payment Instructions",
+    description: "Official UPI payment instructions are shared to complete your simple, transparent one-time payment.",
+    detail: "Pay securely via any UPI app (GPay, PhonePe, Paytm, BHIM) with instant confirmation."
   },
   {
     number: "05",
-    title: "Receive Your Guidance",
-    description: "Receive your tailored written roadmap or attend your scheduled Google Meet consultation.",
-    detail: "Digital delivery within 48 hours or calendar invite sent directly to your email."
+    title: "Guidance Delivery",
+    description: "Attend your private 30-minute consultation or receive your customized written roadmap within 48 hours.",
+    detail: "Actionable milestones and project recommendations ready for execution."
   }
 ];
 
