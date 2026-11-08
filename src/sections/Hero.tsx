@@ -16,7 +16,7 @@ export const Hero: React.FC<HeroProps> = () => {
   };
 
   return (
-    <section id="hero" className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 xl:pt-40 xl:pb-24 overflow-hidden bg-gradient-to-b from-brand-blue-light/50 via-white to-slate-50/40">
+    <section id="hero" className="relative hero-section overflow-hidden bg-gradient-to-b from-brand-blue-light/50 via-white to-slate-50/40">
       {/* Background Accent Grid */}
       <div className="absolute inset-0 bg-subtle-grid pointer-events-none opacity-60" />
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-blue/10 rounded-full blur-3xl pointer-events-none" />

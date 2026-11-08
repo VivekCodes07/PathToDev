@@ -279,7 +279,11 @@ button {
 .pt-12 { padding-top: 3rem; }
 .pt-16 { padding-top: 4rem; }
 .pt-20 { padding-top: 5rem; }
+.pt-24 { padding-top: 6rem; }
+.pt-28 { padding-top: 7rem; }
 .pt-32 { padding-top: 8rem; }
+.pt-36 { padding-top: 9rem; }
+.pt-40 { padding-top: 10rem; }
 
 .pb-0 { padding-bottom: 0; }
 .pb-1 { padding-bottom: 0.25rem; }
@@ -290,7 +294,10 @@ button {
 .pb-6 { padding-bottom: 1.5rem; }
 .pb-8 { padding-bottom: 2rem; }
 .pb-12 { padding-bottom: 3rem; }
+.pb-16 { padding-bottom: 4rem; }
 .pb-20 { padding-bottom: 5rem; }
+.pb-24 { padding-bottom: 6rem; }
+.pb-28 { padding-bottom: 7rem; }
 
 .m-0 { margin: 0; }
 .mx-auto { margin-left: auto; margin-right: auto; }
@@ -697,6 +704,9 @@ button {
   .sm\:mt-0 { margin-top: 0; }
   .sm\:items-center { align-items: center; }
   .sm\:justify-between { justify-content: space-between; }
+  .sm\:pt-28 { padding-top: 7rem; }
+  .sm\:pt-32 { padding-top: 8rem; }
+  .sm\:pb-20 { padding-bottom: 5rem; }
 }
 
 @media (min-width: 768px) {
@@ -709,6 +719,7 @@ button {
   .md\:text-xl { font-size: 1.25rem; }
   .md\:text-4xl { font-size: 2.25rem; }
   .md\:text-5xl { font-size: 3rem; line-height: 1.15; }
+  .md\:pt-36 { padding-top: 9rem; }
   .md\:pt-40 { padding-top: 10rem; }
   .md\:pb-28 { padding-bottom: 7rem; }
   .md\:mb-16 { margin-bottom: 4rem; }
@@ -731,6 +742,8 @@ button {
   .lg\:mx-0 { margin-left: 0; margin-right: 0; }
   .lg\:max-w-none { max-width: none; }
   .lg\:gap-8 { gap: 2rem; }
+  .lg\:pt-36 { padding-top: 9rem; }
+  .lg\:pb-24 { padding-bottom: 6rem; }
   .lg\:text-4xl { font-size: 2.25rem; }
   .lg\:text-5xl { font-size: 3.375rem; line-height: 1.1; }
   .lg\:text-6xl { font-size: 3.75rem; }
@@ -744,6 +757,40 @@ button {
   .xl\:space-y-8 > * + * { margin-top: 2rem; }
   .xl\:text-5xl { font-size: 3.375rem; line-height: 1.1; }
   .xl\:text-6xl { font-size: 4rem; line-height: 1.06; }
+}
+
+/* Hero Section Layout - Guaranteed Safe Clearance for Fixed Navbar (85px) */
+.hero-section {
+  padding-top: 7.25rem; /* 116px on mobile: 85px navbar + 31px clean breathing clearance */
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .hero-section {
+    padding-top: 8rem; /* 128px */
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    padding-top: 9rem; /* 144px */
+    padding-bottom: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    padding-top: 9.5rem; /* 152px */
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-section {
+    padding-top: 10rem; /* 160px */
+    padding-bottom: 6rem;
+  }
 }
 
 /* Master Hero Heading Typography - Prominent & Highly Scalable */
