@@ -691,6 +691,7 @@ button {
   .sm\:text-base { font-size: 1rem; }
   .sm\:text-2xl { font-size: 1.5rem; }
   .sm\:text-3xl { font-size: 1.875rem; }
+  .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
   .sm\:text-5xl { font-size: 3rem; }
   .sm\:text-left { text-align: left; }
   .sm\:mt-0 { margin-top: 0; }
@@ -707,6 +708,7 @@ button {
   .md\:text-lg { font-size: 1.125rem; }
   .md\:text-xl { font-size: 1.25rem; }
   .md\:text-4xl { font-size: 2.25rem; }
+  .md\:text-5xl { font-size: 3rem; line-height: 1.15; }
   .md\:pt-40 { padding-top: 10rem; }
   .md\:pb-28 { padding-bottom: 7rem; }
   .md\:mb-16 { margin-bottom: 4rem; }
@@ -730,7 +732,54 @@ button {
   .lg\:max-w-none { max-width: none; }
   .lg\:gap-8 { gap: 2rem; }
   .lg\:text-4xl { font-size: 2.25rem; }
+  .lg\:text-5xl { font-size: 3.375rem; line-height: 1.1; }
   .lg\:text-6xl { font-size: 3.75rem; }
+}
+
+@media (min-width: 1280px) {
+  .xl\:gap-12 { gap: 3rem; }
+  .xl\:max-w-2xl { max-width: 42rem; }
+  .xl\:pt-40 { padding-top: 10rem; }
+  .xl\:pb-24 { padding-bottom: 6rem; }
+  .xl\:space-y-8 > * + * { margin-top: 2rem; }
+  .xl\:text-5xl { font-size: 3.375rem; line-height: 1.1; }
+  .xl\:text-6xl { font-size: 4rem; line-height: 1.06; }
+}
+
+/* Master Hero Heading Typography - Prominent & Highly Scalable */
+.hero-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.15;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.12;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3.375rem;
+    line-height: 1.08;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-title {
+    font-size: 4rem;
+    line-height: 1.05;
+  }
 }
 
 /* Background Gradients & Effects */

@@ -16,34 +16,34 @@ export const Hero: React.FC<HeroProps> = () => {
   };
 
   return (
-    <section id="hero" className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-to-b from-brand-blue-light/60 via-white to-white">
+    <section id="hero" className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 xl:pt-40 xl:pb-24 overflow-hidden bg-gradient-to-b from-brand-blue-light/50 via-white to-slate-50/40">
       {/* Background Accent Grid */}
       <div className="absolute inset-0 bg-subtle-grid pointer-events-none opacity-60" />
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-blue/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
           {/* Left Column: Heading, Subtitle, CTAs */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-7 text-center lg:text-left">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-7 xl:space-y-8 text-center lg:text-left">
             {/* Top Brand Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-soft border border-brand-blue/25 text-brand-blue text-xs font-bold tracking-wide uppercase shadow-subtle">
               <Compass className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '10s' }} />
               <span>Developer Guidance & Mentorship</span>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.18] sm:leading-[1.14]">
+            {/* Main Heading - Prominent Agency Scale on Desktop, Fluid on Mobile */}
+            <h1 className="hero-title text-brand-navy tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">
               Your Developer Journey Deserves the{' '}
               <span className="relative text-brand-blue inline-block">
                 Right Direction.
                 <svg className="absolute -bottom-1.5 left-0 w-full h-2.5 text-brand-blue/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0 5 Q 50 10, 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                  <path d="M0 5 Q 50 10, 100 5" strokeWidth="3" stroke="currentColor" fill="none" />
                 </svg>
               </span>
             </h1>
 
             {/* Supporting Description */}
-            <p className="text-base sm:text-lg md:text-xl text-brand-muted leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+            <p className="text-base sm:text-lg lg:text-lg xl:text-xl text-brand-muted leading-relaxed max-w-xl xl:max-w-2xl mx-auto lg:mx-0 font-normal">
               Confused about what to learn, which technology to choose, or how to start your developer journey? PathToDev helps you make informed decisions through personalized roadmaps and one-to-one developer guidance.
             </p>
 
@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = () => {
           </div>
 
           {/* Right Column: Visual Composition with High-Contrast Roadmap Mockup */}
-          <div className="lg:col-span-5 relative mt-4 lg:mt-0">
+          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
             {/* Visual Workspace & Roadmap Display */}
             <div className="relative mx-auto max-w-md lg:max-w-none rounded-2xl bg-white border border-slate-200 shadow-elevated overflow-hidden">
               {/* Window Header Chrome */}
@@ -104,29 +104,21 @@ export const Hero: React.FC<HeroProps> = () => {
                 </div>
               </div>
 
-              {/* Developer Collaboration Media Visual */}
+              {/* Developer Collaboration Visual - Authentic Students & Mentors Working on Code */}
               <div className="relative aspect-[16/10] bg-[#101B35] overflow-hidden group">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700"
-                  poster="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                >
-                  <source
-                    src="https://assets.mixkit.co/videos/preview/mixkit-young-man-working-on-his-laptop-in-an-office-42777-large.mp4"
-                    type="video/mp4"
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                    alt="Developer workspace and mentorship session"
-                    className="w-full h-full object-cover"
-                  />
-                </video>
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=85"
+                  alt="Developer mentors and students collaborating on software projects"
+                  className="w-full h-full object-cover object-center opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="eager"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=85";
+                  }}
+                />
 
                 {/* Dark Gradient Overlay for Maximum Foreground Text Contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101B35] via-[#101B35]/50 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101B35] via-[#101B35]/55 to-transparent pointer-events-none" />
 
                 {/* High-Contrast Roadmap Overlay Card */}
                 <div className="absolute bottom-3 left-3 right-3 p-3.5 sm:p-4 rounded-xl bg-[#101B35]/95 backdrop-blur-md border border-slate-700/80 text-white shadow-2xl flex items-center justify-between gap-3">
