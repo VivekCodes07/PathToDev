@@ -76,3 +76,26 @@ export const PREFILLED_MESSAGES = {
   oneToOne: "Hi PathToDev! I would like to book a One-to-One Guidance Call (₹299). Could you please share available slots?",
   completePackage: "Hi PathToDev! I am interested in the Complete Developer Guidance Package (₹499). Could you please help me get started?",
 };
+
+/**
+ * Builds a direct Gmail web compose URL with properly encoded subject and body.
+ * Opens in browser: https://mail.google.com/mail/?view=cm&fs=1&to=EMAIL_ADDRESS
+ */
+export function getGmailUrl(subject?: string, body?: string): string {
+  const email = SITE_CONFIG.officialEmail;
+  let url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+  if (subject) url += `&su=${encodeURIComponent(subject)}`;
+  if (body) url += `&body=${encodeURIComponent(body)}`;
+  return url;
+}
+
+export const PREFILLED_EMAIL = {
+  general: {
+    subject: "PathToDev — General Enquiry",
+    body: "Hi PathToDev, I would like to know more about your developer guidance services.",
+  },
+  serviceEnquiry: {
+    subject: "PathToDev — Service Enquiry",
+    body: "Hi PathToDev, I am interested in your developer guidance services. Please share the next steps.",
+  },
+};

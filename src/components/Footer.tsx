@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, MessageCircle, ArrowUpRight, Heart, Shield, FileText } from 'lucide-react';
 import { Logo } from './Logo';
-import { SITE_CONFIG, getWhatsAppUrl, PREFILLED_MESSAGES } from '../config/site';
+import { SITE_CONFIG, getWhatsAppUrl, PREFILLED_MESSAGES, getGmailUrl, PREFILLED_EMAIL } from '../config/site';
 import { SERVICES } from '../config/services';
 
 interface FooterProps {
@@ -115,8 +115,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
             </h4>
             <div className="space-y-2.5 text-sm text-slate-300">
               <a
-                href={`mailto:${SITE_CONFIG.officialEmail}`}
+                href={getGmailUrl(PREFILLED_EMAIL.general.subject, PREFILLED_EMAIL.general.body)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-white transition-colors break-all"
+                title="Send email via Gmail Compose"
               >
                 <Mail className="w-4 h-4 text-brand-blue shrink-0" />
                 <span>{SITE_CONFIG.officialEmail}</span>

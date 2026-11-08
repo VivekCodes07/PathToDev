@@ -1,7 +1,7 @@
 import React from 'react';
 import { SectionHeading } from '../components/SectionHeading';
 import { ContactForm } from '../components/ContactForm';
-import { SITE_CONFIG, getWhatsAppUrl, PREFILLED_MESSAGES } from '../config/site';
+import { SITE_CONFIG, getWhatsAppUrl, PREFILLED_MESSAGES, getGmailUrl, PREFILLED_EMAIL } from '../config/site';
 import { Mail, MessageCircle, Clock, ShieldCheck, ArrowRight, HelpCircle } from 'lucide-react';
 
 interface ContactProps {
@@ -63,8 +63,11 @@ export const Contact: React.FC<ContactProps> = ({ selectedServiceTitle, onOpenPa
                 Reach out for institutional mentorship, roadmap questions, or formal communications.
               </p>
               <a
-                href={`mailto:${SITE_CONFIG.officialEmail}`}
+                href={getGmailUrl(PREFILLED_EMAIL.general.subject, PREFILLED_EMAIL.general.body)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-dark text-white text-xs font-bold transition-colors shadow-sm break-all"
+                title="Send email via Gmail Compose"
               >
                 <Mail className="w-4 h-4" />
                 <span>{SITE_CONFIG.officialEmail}</span>

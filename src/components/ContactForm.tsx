@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle2, AlertCircle, MessageCircle, Mail } from 'lucide-react';
-import { SITE_CONFIG, getWhatsAppUrl } from '../config/site';
+import { SITE_CONFIG, getWhatsAppUrl, getGmailUrl } from '../config/site';
 import { SERVICES } from '../config/services';
 import { EnquiryFormData } from '../types';
 
@@ -80,8 +80,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
   };
 
   const handleSendViaEmail = () => {
-    const text = encodeURIComponent(getFormattedSummary());
-    window.location.href = `mailto:${SITE_CONFIG.officialEmail}?subject=PathToDev Guidance Requirements - ${formData.name}&body=${text}`;
+    const subject = `PathToDev — Guidance Requirements (${formData.name})`;
+    const body = getFormattedSummary();
+    const url = getGmailUrl(subject, body);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
