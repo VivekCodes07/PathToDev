@@ -1,4 +1,4 @@
-import { ServiceItem, FAQItem, JourneyStage, StepItem } from '../types';
+import { ServiceItem, FAQItem, JourneyStage, StepItem, WhyChooseItem, TransparencyBoundaries } from '../types';
 import { PREFILLED_MESSAGES } from './site';
 
 export const SERVICES: ServiceItem[] = [
@@ -225,35 +225,53 @@ export const FAQS: FAQItem[] = [
   }
 ];
 
-export const WHY_CHOOSE_ITEMS = [
+export const WHY_CHOOSE_ITEMS: WhyChooseItem[] = [
   {
     title: "Personalized Developer Roadmaps",
-    description: "Every student has different hours, college commitments, and background. We build roadmaps around you, not generic one-size-fits-all templates.",
+    description: "Tailored learning blueprints constructed around your individual goals, current coding background, and academic semester schedule.",
     icon: "Map"
   },
   {
     title: "Beginner-Friendly Guidance",
-    description: "No intimidating tech jargon or superiority complex. We meet you where you are and explain concepts in clear, intuitive terms.",
-    icon: "Smile"
+    description: "Approachable explanations and patient, judgment-free support that demystifies software concepts without intimidating jargon.",
+    icon: "HeartHandshake"
   },
   {
-    title: "Clear Learning Direction",
-    description: "Stop jumping between tutorials every week. Get a disciplined, structured order of topics to learn from foundation to real-world projects.",
+    title: "Technology & Stack Selection",
+    description: "Objective guidance to help you commit to one viable technology path instead of second-guessing or hopping between stacks.",
     icon: "Navigation"
   },
   {
     title: "Practical Project Recommendations",
-    description: "Move away from cliché clones that everyone builds. Learn what kind of projects genuinely highlight problem-solving skills.",
+    description: "Curated suggestions for meaningful portfolio projects that demonstrate genuine problem-solving, clean architecture, and modern tools.",
     icon: "Terminal"
   },
   {
-    title: "Affordable Services",
-    description: "Transparent, student-accessible pricing starting at just ₹199. Quality mentorship should be accessible to every aspiring coder.",
+    title: "Affordable Student-First Pricing",
+    description: "Transparent, accessible services starting at ₹199 with no hidden charges, upselling pressure, or recurring subscriptions.",
     icon: "Tag"
   },
   {
     title: "Honest & Realistic Advice",
-    description: "Zero hype, zero placement gimmicks, and zero fake guarantees. We offer grounded, practical direction for sustainable long-term growth.",
+    description: "Grounded guidance with zero placement guarantees, exaggerated salary claims, or unrealistic shortcuts to competence.",
     icon: "ShieldCheck"
   }
 ];
+
+export const TRANSPARENCY_BOUNDARIES: TransparencyBoundaries = {
+  badge: "Transparent Boundaries",
+  title: "Our Commitment to Honest Guidance",
+  description: "Clear expectations build long-term trust and genuine developer capability.",
+  whatWeDo: [
+    "Assess your current coding foundation and college study availability.",
+    "Recommend a focused programming stack aligned with your goals.",
+    "Suggest meaningful project ideas with practical implementation steps.",
+    "Provide dedicated 1-on-1 consultation to resolve specific roadblocks."
+  ],
+  whatWeDoNotDo: [
+    "Make false promises of guaranteed internships, jobs, or high salaries.",
+    "Sell generic, recorded video courses or expensive coaching bootcamps.",
+    "Act as a placement consultancy or recruitment middleman.",
+    "Lock students into confusing subscription tiers or recurring payments."
+  ]
+};

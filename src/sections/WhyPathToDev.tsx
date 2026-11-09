@@ -1,16 +1,34 @@
 import React from 'react';
 import { SectionHeading } from '../components/SectionHeading';
-import { WHY_CHOOSE_ITEMS } from '../config/services';
-import { Map, Smile, Navigation, Terminal, Tag, ShieldCheck, Check, X } from 'lucide-react';
+import { WHY_CHOOSE_ITEMS, TRANSPARENCY_BOUNDARIES } from '../config/services';
+import {
+  Map,
+  HeartHandshake,
+  Navigation,
+  Terminal,
+  Tag,
+  ShieldCheck,
+  Check,
+  X,
+  ArrowRight,
+} from 'lucide-react';
+
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  Map,
+  HeartHandshake,
+  Navigation,
+  Terminal,
+  Tag,
+  ShieldCheck,
+};
 
 export const WhyPathToDev: React.FC = () => {
-  const iconMap: Record<string, React.FC<{ className?: string }>> = {
-    Map,
-    Smile,
-    Navigation,
-    Terminal,
-    Tag,
-    ShieldCheck
+  const handleScrollToServices = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -26,7 +44,7 @@ export const WhyPathToDev: React.FC = () => {
         {/* 6 Core Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {WHY_CHOOSE_ITEMS.map((item) => {
-            const IconComp = iconMap[item.icon] || ShieldCheck;
+            const IconComp = ICON_MAP[item.icon] || ShieldCheck;
 
             return (
               <div
@@ -54,14 +72,14 @@ export const WhyPathToDev: React.FC = () => {
           <div className="p-6 bg-brand-navy text-white text-center sm:text-left sm:flex sm:items-center sm:justify-between border-b border-slate-800">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-brand-blue">
-                Transparent Boundaries
+                {TRANSPARENCY_BOUNDARIES.badge}
               </span>
               <h3 className="text-xl font-bold text-white mt-0.5">
-                Our Commitment to Honest Guidance
+                {TRANSPARENCY_BOUNDARIES.title}
               </h3>
             </div>
             <p className="text-xs text-slate-300 mt-2 sm:mt-0 max-w-xs">
-              Clear expectations build long-term trust and genuine developer capability.
+              {TRANSPARENCY_BOUNDARIES.description}
             </p>
           </div>
 
@@ -73,22 +91,12 @@ export const WhyPathToDev: React.FC = () => {
                 <span>What We Do</span>
               </div>
               <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
-                <li className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Analyze your personal background, college hours, and current skills.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Recommend specific programming stacks suitable for your goals.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Outline portfolio-ready projects that showcase real problem-solving.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Provide direct 1-on-1 feedback and untangle specific technical dilemmas.</span>
-                </li>
+                {TRANSPARENCY_BOUNDARIES.whatWeDo.map((point, index) => (
+                  <li key={index} className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -99,25 +107,30 @@ export const WhyPathToDev: React.FC = () => {
                 <span>What We Do NOT Do</span>
               </div>
               <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
-                <li className="flex items-start gap-2.5">
-                  <X className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span>Make false promises of guaranteed internships, jobs, or high salaries.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span>Sell generic, recorded video courses or expensive coaching bootcamps.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span>Act as an placement consultancy or recruitment middleman.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span>Lock students into confusing subscription tiers or recurring payments.</span>
-                </li>
+                {TRANSPARENCY_BOUNDARIES.whatWeDoNotDo.map((point, index) => (
+                  <li key={index} className="flex items-start gap-2.5">
+                    <X className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
+        </div>
+
+        {/* Subtle Closing CTA */}
+        <div className="mt-12 text-center flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <p className="text-sm font-semibold text-brand-dark">
+            Ready for clear, honest developer guidance?
+          </p>
+          <a
+            href="#services"
+            onClick={handleScrollToServices}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-blue-hover text-white text-xs font-bold transition-all shadow-sm group"
+          >
+            <span>Explore Guidance Services</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </a>
         </div>
       </div>
     </section>

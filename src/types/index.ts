@@ -40,6 +40,20 @@ export interface StepItem {
   detail: string;
 }
 
+export interface WhyChooseItem {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface TransparencyBoundaries {
+  badge: string;
+  title: string;
+  description: string;
+  whatWeDo: string[];
+  whatWeDoNotDo: string[];
+}
+
 export interface EnquiryFormData {
   name: string;
   email: string;
