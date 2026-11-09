@@ -180,48 +180,58 @@ export const JOURNEY_STAGES: JourneyStage[] = [
 export const FAQS: FAQItem[] = [
   {
     id: "faq-1",
-    question: "Who can use PathToDev?",
-    answer: "PathToDev is designed specifically for college students (1st through final year), recent graduates, self-taught beginners, and early-stage career switchers who feel overwhelmed by tech choices and need realistic, personalized guidance."
+    question: "Who is PathToDev for, and is it suitable for complete beginners?",
+    answer: "PathToDev is designed for college students, recent graduates, and beginners who want direction in software development. You do not need prior coding experience. Whether you are starting from zero, learning programming fundamentals, or confused about which technology to choose, we help you understand your options and create a practical learning direction based on your goals."
   },
   {
     id: "faq-2",
-    question: "Is PathToDev suitable for complete beginners?",
-    answer: "Yes, absolutely. A significant portion of students we guide have never written a line of code or have only touched basic syntax in college. We explain concepts in plain, non-intimidating language and help you start on the right foot without wasting months."
+    question: "Which guidance service should I choose?",
+    answer: "We offer three one-time guidance services:\n\n**Written Developer Roadmap — ₹199**\nA personalized PDF roadmap with recommended technologies, a step-by-step learning sequence, beginner project suggestions, and a 30-day action plan. Delivered within 48 hours after we receive your completed requirements. No consultation call is included.\n\n**One-to-One Guidance Call — ₹299**\nOne private 30-minute Google Meet consultation to discuss your goals, technology choices, learning direction, and current questions. No written roadmap or ongoing chat support is included.\n\n**Complete Developer Guidance Package — ₹499**\nOur combined package includes one 30-minute Google Meet consultation, a personalized written roadmap with a 90-day action plan, project and portfolio recommendations, and one follow-up clarification message within 7 days. The roadmap is delivered within 48 hours after your consultation.\n\nChoose the written roadmap if you prefer a structured document, the call if you want direct discussion, or the complete package if you want both."
   },
   {
     id: "faq-3",
-    question: "Do you provide coding classes?",
-    answer: "No. PathToDev is strictly a developer guidance and mentorship service. We do not run coding classes, live bootcamps, or sell pre-recorded video courses. Instead, we curate the best learning paths, direct you to optimal free and high-quality resources, and give you an actionable plan to execute."
+    question: "How do I book a one-to-one guidance call?",
+    answer: "Choose the One-to-One Guidance Call or Complete Developer Guidance Package and send us an enquiry through WhatsApp or the website contact form. We review your requirements, confirm the selected service and payment details, and coordinate a mutually convenient Google Meet time. Calls are scheduled Monday to Saturday, between 10:00 AM and 8:00 PM IST."
   },
   {
     id: "faq-4",
-    question: "How will I receive my roadmap?",
-    answer: "Your personalized developer roadmap is delivered digitally as a structured PDF document sent directly to your registered email and WhatsApp. For written roadmaps, delivery is within 48 hours after we receive your completed requirements questionnaire."
+    question: "How will I receive my roadmap, and when?",
+    answer: "Your roadmap is prepared as a structured digital PDF and shared through the email address and WhatsApp contact you provide.\n\nFor the ₹199 Written Developer Roadmap, delivery is within 48 hours after we receive your completed requirements.\n\nFor the ₹499 Complete Developer Guidance Package, delivery is within 48 hours after your consultation call."
   },
   {
     id: "faq-5",
-    question: "How do I book a guidance call?",
-    answer: "Select the 'One-to-One Guidance Call' or 'Complete Developer Guidance Package' on our website, then connect via WhatsApp or our enquiry form. Once service details are confirmed and payment is complete, we coordinate a mutually convenient time slot and share a Google Meet calendar invite."
+    question: "How can I make payment?",
+    answer: "Payments are handled manually through UPI. After reviewing your requirements and confirming your selected service, we share the official UPI payment details through WhatsApp or email.\n\nYou can pay using any UPI-enabled application. Once payment is complete, share the payment confirmation with us so we can proceed with your service.\n\nAll services are one-time payments. There are no recurring subscriptions or automated charges."
   },
   {
     id: "faq-6",
-    question: "How can I make payment?",
-    answer: "We support direct manual UPI payments through any UPI-enabled application (Google Pay, PhonePe, Paytm, BHIM, Cred, or bank apps). We share our UPI details after confirming your requirements, and you can confirm by sending a screenshot."
+    question: "Do you provide coding classes or courses?",
+    answer: "No. PathToDev focuses on developer guidance and career direction, not teaching through coding classes or selling video courses. We help you identify what to learn, which technologies to consider, which resources to follow, and how to approach practical projects. You remain responsible for learning and implementing the concepts yourself."
   },
   {
     id: "faq-7",
-    question: "Do you guarantee internships or jobs?",
-    answer: "No. PathToDev is an honest mentorship and guidance service, not a placement agency or job broker. We do not make false guarantees about hiring, salaries, or placements. Our mission is to give you genuine clarity, structured skills roadmaps, and project direction so you can build authentic competence."
+    question: "Can you complete my assignments or write code for me?",
+    answer: "No. We do not complete college assignments, write academic submissions, solve exams, or build projects on your behalf. Our role is to provide learning direction, explain development choices, recommend resources, and help you understand how to approach your own projects."
   },
   {
     id: "faq-8",
-    question: "Can I ask follow-up questions?",
-    answer: "The 'Complete Developer Guidance Package' includes one follow-up clarification message within 7 days of receiving your roadmap. For other services, additional calls or roadmaps can be scheduled as separate sessions whenever you need fresh direction."
+    question: "Can I ask follow-up questions after receiving guidance?",
+    answer: "The ₹499 Complete Developer Guidance Package includes one follow-up clarification message within 7 days of receiving your roadmap.\n\nThe ₹199 Written Developer Roadmap and ₹299 One-to-One Guidance Call are focused, one-time services and do not include ongoing chat support or unlimited follow-up questions. You can enquire about another service if you need additional guidance."
   },
   {
     id: "faq-9",
+    question: "Do you guarantee internships or placements?",
+    answer: "No. PathToDev is a developer guidance service, not a placement agency or job broker. We cannot guarantee internships, jobs, salary packages, or interview results. Our goal is to help you make informed learning decisions, build relevant skills, and work towards your career goals with a realistic plan."
+  },
+  {
+    id: "faq-10",
     question: "Can I choose my own development field?",
-    answer: "Yes. Whether your interest lies in Frontend Development, Backend Development, Full-Stack Web Development, Mobile Apps, or choosing between languages like JavaScript/TypeScript, Python, Java, or C++, we tailor our advice and roadmaps to your chosen field and college timeline."
+    answer: "Yes. You can discuss your preferred field, whether it is Frontend Development, Backend Development, Full-Stack Development, Mobile App Development, or another area of software development. We help you understand suitable technologies and learning sequences based on your interests, current knowledge, and goals."
+  },
+  {
+    id: "faq-11",
+    question: "What if I need a refund, cancellation, or call rescheduling?",
+    answer: "Our Terms & Conditions state that payments are generally non-refundable once personalized preparation has begun, because creating roadmaps and preparing consultations requires individual analysis.\n\nOur current terms do not specify a separate cancellation window, refund processing timeframe, or fixed call-rescheduling notice period. If your plans change or you have a payment-related concern, contact us through WhatsApp so we can clarify the situation before making any assumptions about a refund or rescheduled session."
   }
 ];
 

@@ -14,10 +14,45 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const renderAnswerContent = (text: string) => {
+    const paragraphs = text.split('\n\n');
+    return (
+      <div className="space-y-3">
+        {paragraphs.map((paragraph, pIdx) => {
+          const lines = paragraph.split('\n');
+          return (
+            <p key={pIdx} className="leading-relaxed">
+              {lines.map((line, lineIdx) => {
+                const parts = line.split(/(\*\*[^*]+\*\*)/g);
+                return (
+                  <React.Fragment key={lineIdx}>
+                    {lineIdx > 0 && <br />}
+                    {parts.map((part, partIdx) => {
+                      if (part.startsWith('**') && part.endsWith('**')) {
+                        return (
+                          <strong key={partIdx} className="font-bold text-brand-navy">
+                            {part.slice(2, -2)}
+                          </strong>
+                        );
+                      }
+                      return part;
+                    })}
+                  </React.Fragment>
+                );
+              })}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
     <div className="w-full max-w-3xl mx-auto space-y-3.5">
       {items.map((item, idx) => {
         const isOpen = openIndex === idx;
+        const buttonId = `faq-btn-${idx}`;
+        const regionId = `faq-answer-${idx}`;
 
         return (
           <div
@@ -29,15 +64,18 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
             }`}
           >
             <button
+              id={buttonId}
               type="button"
               onClick={() => toggle(idx)}
               className="w-full flex items-center justify-between p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded-xl"
               aria-expanded={isOpen}
-              aria-controls={`faq-answer-${idx}`}
+              aria-controls={regionId}
             >
-              <span className={`text-base md:text-lg font-semibold pr-4 leading-snug transition-colors ${
-                isOpen ? 'text-brand-blue' : 'text-brand-navy'
-              }`}>
+              <span
+                className={`text-base md:text-lg font-semibold pr-4 leading-snug transition-colors ${
+                  isOpen ? 'text-brand-blue' : 'text-brand-navy'
+                }`}
+              >
                 {item.question}
               </span>
               <div
@@ -51,10 +89,12 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
 
             {isOpen && (
               <div
-                id={`faq-answer-${idx}`}
-                className="px-5 pb-5 pt-1 text-sm md:text-base text-brand-dark/90 leading-relaxed border-t border-slate-100/60"
+                id={regionId}
+                role="region"
+                aria-labelledby={buttonId}
+                className="px-5 pb-5 pt-2 text-sm md:text-base text-brand-dark/90 leading-relaxed border-t border-slate-100/60 animate-fade-in"
               >
-                <p>{item.answer}</p>
+                {renderAnswerContent(item.answer)}
               </div>
             )}
           </div>

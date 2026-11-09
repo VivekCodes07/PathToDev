@@ -12,7 +12,7 @@ export const FAQ: React.FC = () => {
         <SectionHeading
           badge="Got Questions?"
           title="Frequently Asked Questions"
-          subtitle="Everything you need to know about our developer guidance, roadmaps, payment process, and mentorship scope."
+          subtitle="Clear answers about our guidance services, pricing, payment process, and what to expect before getting started."
           align="center"
         />
 
@@ -24,7 +24,7 @@ export const FAQ: React.FC = () => {
           <HelpCircle className="w-6 h-6 text-brand-blue mx-auto mb-2" />
           <h4 className="text-sm font-bold text-brand-navy">Have a question not listed here?</h4>
           <p className="text-xs text-brand-muted mt-1">
-            We are always happy to clarify before you book any service.
+            We're happy to clarify your questions before you choose a service.
           </p>
           <div className="mt-4">
             <a
