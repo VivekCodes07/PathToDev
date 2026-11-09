@@ -63,75 +63,85 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
   const activeSocials = socialPlatforms.filter(p => typeof p.url === 'string' && p.url.trim() !== '');
 
   return (
-    <footer className="bg-brand-navy text-white pt-16 pb-12 border-t border-slate-800">
-      <div className="container">
+    <footer className="bg-brand-navy text-white pt-14 pb-12 sm:pt-16 sm:pb-14 border-t border-slate-800/90 relative overflow-hidden">
+      {/* Subtle top ambient glow for depth */}
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-24 bg-brand-blue/5 blur-3xl pointer-events-none" 
+        aria-hidden="true" 
+      />
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-          {/* Brand Info (Cols 1-2) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8 xl:gap-10 pb-12 sm:pb-14 border-b border-slate-800/80">
+          
+          {/* Brand Info (Cols 1-2 on desktop, 1 on tablet/mobile) */}
           <div className="lg:col-span-2 space-y-4">
-            <Logo variant="light" showTagline={true} />
-            <p className="text-sm text-slate-300 leading-relaxed max-w-sm mt-3">
+            <div className="inline-block">
+              <Logo variant="light" showTagline={true} />
+            </div>
+            
+            <p className="text-sm text-slate-300/90 leading-relaxed max-w-sm">
               Personalized developer roadmaps and one-to-one mentorship designed to help college students and beginner programmers gain clarity, choose the right tech stack, and build genuine coding confidence.
             </p>
-            <div className="pt-2 text-xs text-slate-400 leading-relaxed border-t border-slate-800/80 max-w-sm">
-              <span className="font-semibold text-slate-300">Positioning Note:</span> PathToDev is a guidance and mentorship initiative, not a coding bootcamp, course seller, or placement agency.
+
+            {/* Premium Positioning Principle Card */}
+            <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800/80 max-w-sm">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" aria-hidden="true" />
+                <span>Positioning Principle</span>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                PathToDev is an independent guidance initiative — not an expensive coding bootcamp, video course seller, or placement agency.
+              </p>
             </div>
           </div>
 
           {/* Quick Navigation Links */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue">
-              Navigation
-            </h4>
+          <div className="space-y-3.5">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-brand-blue flex items-center gap-2">
+              <span className="w-1 h-3 rounded-full bg-brand-blue" aria-hidden="true" />
+              <span>Navigation</span>
+            </h3>
             <ul className="space-y-2.5 text-sm text-slate-300">
-              <li>
-                <a href="#hero" onClick={(e) => handleScroll(e, '#hero')} className="hover:text-white transition-colors duration-150 inline-block">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" onClick={(e) => handleScroll(e, '#about')} className="hover:text-white transition-colors duration-150 inline-block">
-                  About PathToDev
-                </a>
-              </li>
-              <li>
-                <a href="#how-it-works" onClick={(e) => handleScroll(e, '#how-it-works')} className="hover:text-white transition-colors duration-150 inline-block">
-                  How It Works
-                </a>
-              </li>
-              <li>
-                <a href="#journey" onClick={(e) => handleScroll(e, '#journey')} className="hover:text-white transition-colors duration-150 inline-block">
-                  Developer Journey
-                </a>
-              </li>
-              <li>
-                <a href="#why-us" onClick={(e) => handleScroll(e, '#why-us')} className="hover:text-white transition-colors duration-150 inline-block">
-                  Why Choose Us
-                </a>
-              </li>
-              <li>
-                <a href="#faqs" onClick={(e) => handleScroll(e, '#faqs')} className="hover:text-white transition-colors duration-150 inline-block">
-                  FAQs
-                </a>
-              </li>
+              {[
+                { name: 'Home', href: '#hero' },
+                { name: 'About PathToDev', href: '#about' },
+                { name: 'How It Works', href: '#how-it-works' },
+                { name: 'Developer Journey', href: '#journey' },
+                { name: 'Why Choose Us', href: '#why-us' },
+                { name: 'FAQs', href: '#faqs' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="hover:text-white hover:translate-x-1 transition-all duration-150 inline-block py-0.5 focus-visible:ring-1 focus-visible:ring-brand-blue rounded"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Service Links */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue">
-              Services & Pricing
-            </h4>
+          {/* Services & Pricing */}
+          <div className="space-y-3.5">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-brand-blue flex items-center gap-2">
+              <span className="w-1 h-3 rounded-full bg-brand-blue" aria-hidden="true" />
+              <span>Services & Pricing</span>
+            </h3>
             <ul className="space-y-2.5 text-sm text-slate-300">
               {SERVICES.map((s) => (
                 <li key={s.id}>
                   <a
                     href="#services"
                     onClick={(e) => handleScroll(e, '#services')}
-                    className="hover:text-white transition-colors flex items-center justify-between group"
+                    className="hover:text-white transition-colors flex items-center justify-between gap-3 group py-0.5 focus-visible:ring-1 focus-visible:ring-brand-blue rounded"
                   >
-                    <span className="group-hover:translate-x-0.5 transition-transform duration-150">{s.title}</span>
-                    <span className="text-xs font-bold text-brand-blue opacity-85 group-hover:opacity-100 shrink-0 ml-2">
+                    <span className="group-hover:text-white group-hover:translate-x-0.5 transition-all duration-150 text-sm">
+                      {s.title}
+                    </span>
+                    <span className="text-[11px] font-bold text-brand-blue bg-brand-blue/10 border border-brand-blue/25 px-2 py-0.5 rounded-md group-hover:bg-brand-blue group-hover:text-white transition-all duration-150 shrink-0">
                       {s.currency}{s.price}
                     </span>
                   </a>
@@ -141,7 +151,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
                 <a
                   href="#contact"
                   onClick={(e) => handleScroll(e, '#contact')}
-                  className="text-xs font-semibold text-brand-blue hover:text-blue-300 hover:underline inline-flex items-center gap-1 transition-colors"
+                  className="text-xs font-semibold text-brand-blue hover:text-blue-300 hover:underline inline-flex items-center gap-1.5 transition-colors focus-visible:ring-1 focus-visible:ring-brand-blue rounded"
                 >
                   <span>Custom Mentorship Enquiry</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -151,59 +161,69 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
           </div>
 
           {/* Official Contact & Socials */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue">
-              Direct Contact
-            </h4>
+          <div className="space-y-3.5">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-brand-blue flex items-center gap-2">
+              <span className="w-1 h-3 rounded-full bg-brand-blue" aria-hidden="true" />
+              <span>Direct Contact</span>
+            </h3>
+
             <div className="space-y-2.5 text-sm text-slate-300">
+              {/* Email */}
               <a
                 href={getGmailUrl(PREFILLED_EMAIL.general.subject, PREFILLED_EMAIL.general.body)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors break-all group"
+                className="flex items-center gap-2.5 hover:text-white transition-colors break-all group p-1.5 -mx-1.5 rounded-lg hover:bg-slate-900/60 focus-visible:ring-1 focus-visible:ring-brand-blue"
                 title="Send email via Gmail Compose"
                 aria-label={`Send email to ${SITE_CONFIG.officialEmail} (opens Gmail in a new tab)`}
               >
-                <Mail className="w-4 h-4 text-brand-blue shrink-0 group-hover:scale-110 transition-transform duration-150" />
-                <span>{SITE_CONFIG.officialEmail}</span>
+                <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 text-brand-blue flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-colors">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs sm:text-sm font-medium">{SITE_CONFIG.officialEmail}</span>
               </a>
 
+              {/* WhatsApp */}
               <a
                 href={getWhatsAppUrl(PREFILLED_MESSAGES.general)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors group"
+                className="flex items-center gap-2.5 hover:text-white transition-colors group p-1.5 -mx-1.5 rounded-lg hover:bg-slate-900/60 focus-visible:ring-1 focus-visible:ring-brand-blue"
                 title={`Chat with PathToDev on WhatsApp (${SITE_CONFIG.WHATSAPP_DISPLAY})`}
                 aria-label={`Chat with PathToDev on WhatsApp at ${SITE_CONFIG.WHATSAPP_DISPLAY} (opens WhatsApp in a new tab)`}
               >
-                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-110 transition-transform duration-150" />
-                <span>WhatsApp: {SITE_CONFIG.WHATSAPP_DISPLAY}</span>
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20 transition-colors">
+                  <MessageCircle className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs sm:text-sm font-medium">WhatsApp: {SITE_CONFIG.WHATSAPP_DISPLAY}</span>
               </a>
 
               {/* Operating Hours */}
-              <div className="flex items-start gap-2 text-xs text-slate-400 pt-1.5 border-t border-slate-800/80">
-                <Clock className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                <div className="leading-tight">
-                  <span className="text-slate-300 font-medium block mb-0.5">Monday–Saturday</span>
+              <div className="flex items-start gap-2.5 text-xs text-slate-400 pt-2 border-t border-slate-800/80">
+                <div className="w-7 h-7 rounded-lg bg-slate-800/80 border border-slate-700/60 text-brand-blue flex items-center justify-center shrink-0 mt-0.5">
+                  <Clock className="w-3.5 h-3.5" />
+                </div>
+                <div className="leading-snug">
+                  <span className="text-slate-300 font-medium block">Monday–Saturday</span>
                   <span>10:00 AM–8:00 PM IST</span>
                 </div>
               </div>
             </div>
 
-            {/* Configurable Social Media Section */}
-            <div className="pt-3 border-t border-slate-800/80">
+            {/* Social Media Section */}
+            <div className="pt-2 border-t border-slate-800/80">
               <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
                 Social Profiles
               </p>
               {activeSocials.length > 0 ? (
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   {activeSocials.map((platform) => (
                     <a
                       key={platform.name}
                       href={platform.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-lg bg-slate-800/80 hover:bg-brand-blue hover:text-white text-slate-300 flex items-center justify-center transition-all duration-150 border border-slate-700/60"
+                      className="w-8 h-8 rounded-lg bg-slate-800/90 hover:bg-brand-blue hover:text-white text-slate-300 flex items-center justify-center transition-all duration-150 border border-slate-700/60 hover:border-brand-blue focus-visible:ring-1 focus-visible:ring-brand-blue"
                       aria-label={`Follow PathToDev on ${platform.name} (opens in a new tab)`}
                       title={`Follow PathToDev on ${platform.name}`}
                     >
@@ -222,33 +242,33 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
 
         {/* Bottom Legal and Copyright Area */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div className="text-center sm:text-left">
+          <div className="text-center sm:text-left leading-relaxed">
             © {currentYear} {SITE_CONFIG.brandName}. All rights reserved.
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
             <button
               type="button"
               onClick={onOpenPrivacy}
-              className="hover:text-white transition-colors inline-flex items-center gap-1.5 focus-visible:ring-1 focus-visible:ring-brand-blue rounded"
+              className="hover:text-white transition-colors inline-flex items-center gap-1.5 py-1 px-2 rounded-md hover:bg-slate-800/60 focus-visible:ring-1 focus-visible:ring-brand-blue"
             >
               <Shield className="w-3.5 h-3.5 text-slate-400" />
               <span>Privacy Policy</span>
             </button>
-            <span className="text-slate-600 hidden xs:inline" aria-hidden="true">•</span>
+            <span className="text-slate-700 hidden sm:inline" aria-hidden="true">•</span>
             <button
               type="button"
               onClick={onOpenTerms}
-              className="hover:text-white transition-colors inline-flex items-center gap-1.5 focus-visible:ring-1 focus-visible:ring-brand-blue rounded"
+              className="hover:text-white transition-colors inline-flex items-center gap-1.5 py-1 px-2 rounded-md hover:bg-slate-800/60 focus-visible:ring-1 focus-visible:ring-brand-blue"
             >
               <FileText className="w-3.5 h-3.5 text-slate-400" />
               <span>Terms & Conditions</span>
             </button>
-            <span className="text-slate-600 hidden xs:inline" aria-hidden="true">•</span>
+            <span className="text-slate-700 hidden sm:inline" aria-hidden="true">•</span>
             <button
               type="button"
               onClick={onOpenRefund}
-              className="hover:text-white transition-colors inline-flex items-center gap-1.5 focus-visible:ring-1 focus-visible:ring-brand-blue rounded"
+              className="hover:text-white transition-colors inline-flex items-center gap-1.5 py-1 px-2 rounded-md hover:bg-slate-800/60 focus-visible:ring-1 focus-visible:ring-brand-blue"
             >
               <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
               <span>Refund Policy</span>
