@@ -20,7 +20,7 @@ export const About: React.FC = () => {
               <img
                 src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
                 alt="Students collaborating and learning development"
-                className="w-full h-[420px] object-cover"
+                className="w-full h-72 sm:h-80 md:h-[380px] lg:h-[420px] object-cover"
                 loading="lazy"
                 onError={(e) => {
                   // Fallback if network image fails
@@ -30,7 +30,7 @@ export const About: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent" />
               
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-slate-100 text-brand-navy shadow-lg">
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-3.5 sm:p-4 rounded-xl bg-white/95 backdrop-blur-md border border-slate-100 text-brand-navy shadow-lg">
                 <p className="text-xs font-bold text-brand-blue uppercase tracking-wider">The PathToDev Philosophy</p>
                 <p className="text-sm font-semibold text-brand-navy mt-1">
                   "Clarity beats speed. Building one real thing with direction is worth more than watching twenty tutorials."

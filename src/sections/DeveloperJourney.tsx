@@ -37,7 +37,7 @@ export const DeveloperJourney: React.FC = () => {
   return (
     <section id="journey" className="section-py bg-white relative overflow-hidden">
       {/* Background accents */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-blue-soft/50 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-blue-soft/50 rounded-full blur-3xl pointer-events-none z-0" />
 
       <div className="container relative z-10">
         <SectionHeading

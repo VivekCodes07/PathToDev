@@ -26,13 +26,19 @@ export const Services: React.FC<ServicesProps> = ({
 
         {/* 3 Premium Service Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch pt-4">
-          {SERVICES.map((service) => (
-            <ServiceCard
+          {SERVICES.map((service, idx) => (
+            <div
               key={service.id}
-              service={service}
-              onSelectService={onSelectService}
-              onOpenPaymentInfo={onOpenPaymentInfo}
-            />
+              className={`flex flex-col h-full ${
+                idx === 2 ? 'md:col-span-2 md:max-w-lg md:mx-auto md:w-full lg:col-span-1 lg:max-w-none' : ''
+              }`}
+            >
+              <ServiceCard
+                service={service}
+                onSelectService={onSelectService}
+                onOpenPaymentInfo={onOpenPaymentInfo}
+              />
+            </div>
           ))}
         </div>
 

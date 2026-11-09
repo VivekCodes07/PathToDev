@@ -442,6 +442,8 @@ button {
 .h-14 { height: 3.5rem; }
 .h-16 { height: 4rem; }
 .h-44 { height: 11rem; }
+.h-72 { height: 18rem; }
+.h-80 { height: 20rem; }
 .h-96 { height: 24rem; }
 .h-\[420px\] { height: 420px; }
 
@@ -451,6 +453,7 @@ button {
 .max-h-\[85vh\] { max-height: 85vh; }
 .max-h-\[90vh\] { max-height: 90vh; }
 
+.max-w-full { max-width: 100%; }
 .max-w-xs { max-width: 20rem; }
 .max-w-sm { max-width: 24rem; }
 .max-w-md { max-width: 28rem; }
@@ -471,13 +474,16 @@ button {
 .bottom-0 { bottom: 0; }
 .bottom-2 { bottom: 0.5rem; }
 .bottom-3 { bottom: 0.75rem; }
+.bottom-4 { bottom: 1rem; }
 .bottom-6 { bottom: 1.5rem; }
 .left-0 { left: 0; }
 .left-3 { left: 0.75rem; }
+.left-4 { left: 1rem; }
 .left-6 { left: 1.5rem; }
 .left-1\/2 { left: 50%; }
 .right-0 { right: 0; }
 .right-3 { right: 0.75rem; }
+.right-4 { right: 1rem; }
 .right-6 { right: 1.5rem; }
 .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
 
@@ -751,9 +757,14 @@ button {
   .sm\:w-auto { width: auto; }
   .sm\:w-14 { width: 3.5rem; }
   .sm\:w-80 { width: 20rem; }
+  .sm\:w-96 { width: 24rem; }
   .sm\:h-14 { height: 3.5rem; }
-  .sm\:w-6 { width: 1.5rem; }
   .sm\:h-6 { height: 1.5rem; }
+  .sm\:h-80 { height: 20rem; }
+  .sm\:h-96 { height: 24rem; }
+  .sm\:bottom-6 { bottom: 1.5rem; }
+  .sm\:left-6 { left: 1.5rem; }
+  .sm\:right-6 { right: 1.5rem; }
   .sm\:p-8 { padding: 2rem; }
   .sm\:p-10 { padding: 2.5rem; }
   .sm\:text-xs { font-size: 0.75rem; }
@@ -775,8 +786,16 @@ button {
 @media (min-width: 768px) {
   .md\:flex { display: flex; }
   .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:col-span-2 { grid-column: span 2 / span 2; }
   .md\:col-span-5 { grid-column: span 5 / span 5; }
   .md\:col-span-7 { grid-column: span 7 / span 7; }
+  .md\:max-w-md { max-width: 28rem; }
+  .md\:max-w-lg { max-width: 32rem; }
+  .md\:mx-auto { margin-left: auto; margin-right: auto; }
+  .md\:w-full { width: 100%; }
+  .md\:p-8 { padding: 2rem; }
+  .md\:p-10 { padding: 2.5rem; }
+  .md\:h-\[380px\] { height: 380px; }
   .md\:text-base { font-size: 1rem; }
   .md\:text-lg { font-size: 1.125rem; }
   .md\:text-xl { font-size: 1.25rem; }
@@ -798,12 +817,15 @@ button {
   .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lg\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .lg\:col-span-1 { grid-column: span 1 / span 1; }
   .lg\:col-span-2 { grid-column: span 2 / span 2; }
   .lg\:col-span-5 { grid-column: span 5 / span 5; }
   .lg\:col-span-7 { grid-column: span 7 / span 7; }
   .lg\:text-left { text-align: left; }
   .lg\:mx-0 { margin-left: 0; margin-right: 0; }
   .lg\:max-w-none { max-width: none; }
+  .lg\:p-10 { padding: 2.5rem; }
+  .lg\:h-\[420px\] { height: 420px; }
   .lg\:gap-8 { gap: 2rem; }
   .lg\:pt-36 { padding-top: 9rem; }
   .lg\:pb-24 { padding-bottom: 6rem; }

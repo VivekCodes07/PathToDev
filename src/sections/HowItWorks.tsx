@@ -33,11 +33,14 @@ export const HowItWorks: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
             {HOW_IT_WORKS_STEPS.map((step, idx) => {
               const IconComponent = stepIcons[idx] || Sparkles;
+              const isLast = idx === HOW_IT_WORKS_STEPS.length - 1;
 
               return (
                 <div
                   key={step.number}
-                  className="flex flex-col h-full bg-white rounded-2xl border border-slate-200 p-6 shadow-subtle hover:shadow-premium hover:-translate-y-1 transition-all duration-300 relative group"
+                  className={`flex flex-col h-full bg-white rounded-2xl border border-slate-200 p-6 shadow-subtle hover:shadow-premium hover:-translate-y-1 transition-all duration-300 relative group ${
+                    isLast ? 'md:col-span-2 md:max-w-md md:mx-auto md:w-full lg:col-span-1 lg:max-w-none' : ''
+                  }`}
                 >
                   {/* Step Number & Icon Header */}
                   <div className="flex items-center justify-between mb-5">

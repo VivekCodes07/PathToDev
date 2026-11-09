@@ -93,7 +93,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-premium p-6 sm:p-10">
+    <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-premium p-4 sm:p-8 md:p-10">
       {/* Direct Guidance Workflow Notice */}
       <div className="mb-6 p-4 rounded-xl bg-brand-blue-soft/60 border border-brand-blue/20 flex items-start gap-3">
         <Sparkles className="w-5 h-5 text-brand-blue shrink-0 mt-0.5" />
