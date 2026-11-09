@@ -57,6 +57,7 @@ export interface TransparencyBoundaries {
 export interface EnquiryFormData {
   name: string;
   email: string;
+  phone?: string;
   academicYear: string;
   programmingKnowledge: string;
   interestedField: string;

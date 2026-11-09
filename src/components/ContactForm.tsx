@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, AlertCircle, MessageCircle, Mail } from 'lucide-react';
-import { SITE_CONFIG, getWhatsAppUrl, getGmailUrl } from '../config/site';
+import { Send, CheckCircle2, MessageCircle, Mail, Sparkles } from 'lucide-react';
+import { getWhatsAppUrl, getGmailUrl } from '../config/site';
 import { SERVICES } from '../config/services';
 import { EnquiryFormData } from '../types';
 
@@ -12,6 +12,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
   const [formData, setFormData] = useState<EnquiryFormData>({
     name: '',
     email: '',
+    phone: '',
     academicYear: '1st Year College',
     programmingKnowledge: 'Complete Beginner (Zero to basic)',
     interestedField: 'Full Stack Web Development',
@@ -27,7 +28,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
 
   const validate = (): boolean => {
     const newErrors: Partial<Record<keyof EnquiryFormData, string>> = {};
-    if (!formData.name.trim()) newErrors.name = 'Please enter your name.';
+    if (!formData.name.trim()) {
+      newErrors.name = 'Please enter your name.';
+    }
     if (!formData.email.trim()) {
       newErrors.email = 'Please enter your email.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -54,16 +57,18 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 400);
+    }, 350);
   };
 
-  // Build formatted text message for WhatsApp/Email fallback
+  // Build formatted text message for WhatsApp/Email dispatch
   const getFormattedSummary = () => {
+    const contactPhone = formData.phone?.trim() ? formData.phone.trim() : 'Not provided';
     return (
       `Hello PathToDev,\n\n` +
       `I would like to submit my guidance requirements:\n` +
       `• Name: ${formData.name}\n` +
       `• Email: ${formData.email}\n` +
+      `• WhatsApp / Phone: ${contactPhone}\n` +
       `• Year / Level: ${formData.academicYear}\n` +
       `• Knowledge Level: ${formData.programmingKnowledge}\n` +
       `• Target Field: ${formData.interestedField}\n` +
@@ -75,12 +80,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
   };
 
   const handleSendViaWhatsApp = () => {
-    const url = getWhatsAppUrl(getFormattedSummary());
+    const summary = getFormattedSummary();
+    const url = getWhatsAppUrl(summary);
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handleSendViaEmail = () => {
-    const subject = `PathToDev — Guidance Requirements (${formData.name})`;
+    const subject = `PathToDev — Guidance Requirements: ${formData.name.trim()}`;
     const body = getFormattedSummary();
     const url = getGmailUrl(subject, body);
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -88,29 +94,33 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
 
   return (
     <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-premium p-6 sm:p-10">
-      {/* Notice about form configuration */}
-      {!SITE_CONFIG.form.isConfigured && (
-        <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200/80 flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-          <div className="text-xs text-amber-900 leading-relaxed">
-            <span className="font-bold">Form Configuration Notice:</span> This enquiry form is in client-side preview mode. No data is stored in a database. Submissions can be dispatched directly via WhatsApp or official email below.
-          </div>
+      {/* Direct Guidance Workflow Notice */}
+      <div className="mb-6 p-4 rounded-xl bg-brand-blue-soft/60 border border-brand-blue/20 flex items-start gap-3">
+        <Sparkles className="w-5 h-5 text-brand-blue shrink-0 mt-0.5" />
+        <div className="text-xs text-brand-dark leading-relaxed">
+          <span className="font-bold text-brand-navy block sm:inline mr-1.5">Direct Guidance Workflow:</span>
+          Share your requirements below. Once you submit the form, you can review your enquiry and send it directly to us through WhatsApp or email.
         </div>
-      )}
+      </div>
 
       {submitted ? (
-        <div className="text-center py-8 space-y-5 animate-in fade-in duration-300">
-          <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+        <div className="text-center py-6 sm:py-8 space-y-5 animate-fade-in">
+          <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-sm">
             <CheckCircle2 className="w-8 h-8" />
           </div>
           <div>
             <h3 className="text-2xl font-bold text-brand-navy">Enquiry Details Prepared!</h3>
-            <p className="mt-2 text-sm text-brand-muted max-w-md mx-auto">
-              Thank you, <span className="font-semibold text-brand-navy">{formData.name}</span>. Since our platform uses direct WhatsApp & Email communication, please choose how you would like to send these details to our mentors:
+            <p className="mt-2 text-sm text-brand-muted max-w-lg mx-auto leading-relaxed">
+              Thank you, <span className="font-semibold text-brand-navy">{formData.name}</span>. Please review your details below and choose whether to send them to us via WhatsApp or Gmail to complete your enquiry:
             </p>
           </div>
 
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-left text-xs text-slate-700 font-mono whitespace-pre-wrap max-h-48 overflow-y-auto">
+          <div
+            tabIndex={0}
+            role="region"
+            aria-label="Enquiry summary preview"
+            className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-left text-xs text-slate-700 font-mono whitespace-pre-wrap max-h-56 overflow-y-auto shadow-inner focus:outline-none focus:ring-2 focus:ring-brand-blue"
+          >
             {getFormattedSummary()}
           </div>
 
@@ -119,6 +129,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
               type="button"
               onClick={handleSendViaWhatsApp}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors shadow-sm"
+              title="Open WhatsApp with your prefilled requirements"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Send via WhatsApp</span>
@@ -127,6 +138,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
               type="button"
               onClick={handleSendViaEmail}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-navy hover:bg-brand-dark text-white font-semibold text-sm transition-colors shadow-sm"
+              title="Open Gmail Compose with your prefilled requirements"
             >
               <Mail className="w-4 h-4" />
               <span>Send via Email</span>
@@ -134,14 +146,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
             <button
               type="button"
               onClick={() => setSubmitted(false)}
-              className="text-xs font-semibold text-brand-muted hover:text-brand-blue py-2"
+              className="text-xs font-semibold text-brand-muted hover:text-brand-blue py-2 transition-colors px-2"
             >
               Edit Requirements
             </button>
           </div>
+          <p className="text-[11px] text-slate-500">
+            Clicking a button will open WhatsApp or Gmail in a new tab with your prefilled details ready to send.
+          </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6" noValidate>
           {/* Row 1: Name & Email */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
@@ -151,12 +166,21 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
               <input
                 id="name"
                 type="text"
+                required
+                aria-required="true"
+                autoComplete="name"
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'name-error' : undefined}
                 className={`form-input ${errors.name ? 'border-red-400 focus:border-red-500' : ''}`}
                 placeholder="e.g. Rahul Sharma"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
-              {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
+              {errors.name && (
+                <p id="name-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
+                  {errors.name}
+                </p>
+              )}
             </div>
 
             <div>
@@ -166,17 +190,41 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
               <input
                 id="email"
                 type="email"
+                required
+                aria-required="true"
+                autoComplete="email"
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'email-error' : undefined}
                 className={`form-input ${errors.email ? 'border-red-400 focus:border-red-500' : ''}`}
                 placeholder="e.g. rahul@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
-              {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
+              {errors.email && (
+                <p id="email-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
+                  {errors.email}
+                </p>
+              )}
             </div>
           </div>
 
-          {/* Row 2: Academic Year & Programming Knowledge */}
+          {/* Row 2: WhatsApp Number (Optional) & Academic Year */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label className="form-label" htmlFor="phone">
+                WhatsApp / Contact Number <span className="text-slate-400 font-normal">(Optional)</span>
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                autoComplete="tel"
+                className="form-input"
+                placeholder="e.g. +91 98765 43210"
+                value={formData.phone || ''}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              />
+            </div>
+
             <div>
               <label className="form-label" htmlFor="academicYear">
                 Academic Year / Experience Level
@@ -196,7 +244,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
                 <option value="Self-Taught Learner">Self-Taught Learner</option>
               </select>
             </div>
+          </div>
 
+          {/* Row 3: Programming Knowledge & Target Field */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label className="form-label" htmlFor="programmingKnowledge">
                 Current Programming Knowledge
@@ -214,10 +265,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
                 <option value="Stuck in tutorial hell for months">Stuck in tutorial hell for months</option>
               </select>
             </div>
-          </div>
 
-          {/* Row 3: Interested Field & Preferred Service */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label className="form-label" htmlFor="interestedField">
                 Target Development Field
@@ -235,27 +283,28 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
                 <option value="Not sure yet (Need guidance to choose)">Not sure yet (Need guidance to choose)</option>
               </select>
             </div>
-
-            <div>
-              <label className="form-label" htmlFor="preferredService">
-                Preferred Guidance Service
-              </label>
-              <select
-                id="preferredService"
-                className="form-input bg-white font-medium"
-                value={formData.preferredService}
-                onChange={(e) => setFormData({ ...formData, preferredService: e.target.value })}
-              >
-                {SERVICES.map((s) => (
-                  <option key={s.id} value={s.title}>
-                    {s.title} ({s.currency}{s.price})
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
 
-          {/* Row 4: Main Learning Goal */}
+          {/* Row 4: Preferred Guidance Service */}
+          <div>
+            <label className="form-label" htmlFor="preferredService">
+              Preferred Guidance Service
+            </label>
+            <select
+              id="preferredService"
+              className="form-input bg-white font-medium"
+              value={formData.preferredService}
+              onChange={(e) => setFormData({ ...formData, preferredService: e.target.value })}
+            >
+              {SERVICES.map((s) => (
+                <option key={s.id} value={s.title}>
+                  {s.title} ({s.currency}{s.price})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Row 5: Main Learning Goal */}
           <div>
             <label className="form-label" htmlFor="learningGoal">
               What is your primary learning goal? <span className="text-brand-blue">*</span>
@@ -263,15 +312,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
             <input
               id="learningGoal"
               type="text"
+              required
+              aria-required="true"
+              aria-invalid={!!errors.learningGoal}
+              aria-describedby={errors.learningGoal ? 'learningGoal-error' : undefined}
               className={`form-input ${errors.learningGoal ? 'border-red-400 focus:border-red-500' : ''}`}
               placeholder="e.g. Master React and build 3 production-grade portfolio projects in the next 3 months"
               value={formData.learningGoal}
               onChange={(e) => setFormData({ ...formData, learningGoal: e.target.value })}
             />
-            {errors.learningGoal && <p className="text-xs text-red-500 mt-1">{errors.learningGoal}</p>}
+            {errors.learningGoal && (
+              <p id="learningGoal-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
+                {errors.learningGoal}
+              </p>
+            )}
           </div>
 
-          {/* Row 5: Current Confusion / Dilemma */}
+          {/* Row 6: Current Confusion / Dilemma */}
           <div>
             <label className="form-label" htmlFor="currentConfusion">
               What is your current confusion or difficulty? <span className="text-brand-blue">*</span>
@@ -279,15 +336,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialServiceId }) =>
             <textarea
               id="currentConfusion"
               rows={3}
+              required
+              aria-required="true"
+              aria-invalid={!!errors.currentConfusion}
+              aria-describedby={errors.currentConfusion ? 'currentConfusion-error' : undefined}
               className={`form-input resize-none ${errors.currentConfusion ? 'border-red-400 focus:border-red-500' : ''}`}
               placeholder="e.g. I jump between Python and JavaScript tutorials without knowing how they connect or which projects matter for internships."
               value={formData.currentConfusion}
               onChange={(e) => setFormData({ ...formData, currentConfusion: e.target.value })}
             />
-            {errors.currentConfusion && <p className="text-xs text-red-500 mt-1">{errors.currentConfusion}</p>}
+            {errors.currentConfusion && (
+              <p id="currentConfusion-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
+                {errors.currentConfusion}
+              </p>
+            )}
           </div>
 
-          {/* Row 6: Additional Message */}
+          {/* Row 7: Additional Message */}
           <div>
             <label className="form-label" htmlFor="additionalMessage">
               Additional Details or Questions <span className="text-slate-400 font-normal">(Optional)</span>

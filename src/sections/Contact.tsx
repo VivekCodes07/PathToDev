@@ -2,7 +2,7 @@ import React from 'react';
 import { SectionHeading } from '../components/SectionHeading';
 import { ContactForm } from '../components/ContactForm';
 import { SITE_CONFIG, getWhatsAppUrl, PREFILLED_MESSAGES, getGmailUrl, PREFILLED_EMAIL } from '../config/site';
-import { Mail, MessageCircle, Clock, ShieldCheck, ArrowRight, HelpCircle } from 'lucide-react';
+import { Mail, MessageCircle, Clock, ArrowRight } from 'lucide-react';
 
 interface ContactProps {
   selectedServiceTitle?: string;
@@ -31,7 +31,9 @@ export const Contact: React.FC<ContactProps> = ({ selectedServiceTitle, onOpenPa
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-brand-navy">Fastest Response: WhatsApp</h3>
-                  <p className="text-xs text-brand-muted">Direct mentor chat</p>
+                  <p className="text-xs font-semibold text-emerald-700 select-all">
+                    WhatsApp: {SITE_CONFIG.WHATSAPP_DISPLAY}
+                  </p>
                 </div>
               </div>
               <p className="text-xs text-brand-dark/80 leading-relaxed mb-4">
@@ -42,6 +44,7 @@ export const Contact: React.FC<ContactProps> = ({ selectedServiceTitle, onOpenPa
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors shadow-sm"
+                title={`Chat with PathToDev on WhatsApp (${SITE_CONFIG.WHATSAPP_DISPLAY})`}
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Open WhatsApp Chat</span>
