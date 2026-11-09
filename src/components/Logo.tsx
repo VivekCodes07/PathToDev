@@ -13,13 +13,14 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   const [hasError, setHasError] = useState(false);
   const isLight = variant === 'light';
+  const baseUrl = import.meta.env.BASE_URL;
 
   // Official logo asset selection:
   // variant='light' is used on dark backgrounds (e.g. Footer)
   // variant='dark' is used on light backgrounds (e.g. Navbar)
   const logoSrc = isLight
-    ? '/logo/pathtodev-logo-horizontal-dark.png'
-    : '/logo/pathtodev-logo-horizontal.png';
+    ? `${baseUrl}logo/pathtodev-logo-horizontal-dark.png`
+    : `${baseUrl}logo/pathtodev-logo-horizontal.png`;
 
   return (
     <div className={`inline-flex flex-col select-none ${className}`}>
@@ -46,7 +47,7 @@ export const Logo: React.FC<LogoProps> = ({
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2">
             <img
-              src={isLight ? '/brand/icons/pathtodev-icon-white.png' : '/brand/icons/pathtodev-icon.png'}
+              src={isLight ? `${baseUrl}brand/icons/pathtodev-icon-white.png` : `${baseUrl}brand/icons/pathtodev-icon.png`}
               alt="PathToDev Monogram"
               className="w-7 h-7 sm:w-8 sm:h-8 object-contain shrink-0"
             />

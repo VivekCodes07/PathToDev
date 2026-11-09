@@ -124,7 +124,7 @@ export const Hero: React.FC<HeroProps> = () => {
                 <div className="absolute bottom-3 left-3 right-3 p-3.5 sm:p-4 rounded-xl bg-[#101B35]/95 backdrop-blur-md border border-slate-700/80 text-white shadow-2xl flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-9 h-9 rounded-lg bg-white/10 border border-brand-blue/40 flex items-center justify-center shrink-0 shadow-sm overflow-hidden p-1">
-                      <img src="/brand/icons/pathtodev-icon-white.png" alt="PathToDev Icon" className="w-full h-full object-contain" />
+                      <img src={`${import.meta.env.BASE_URL}brand/icons/pathtodev-icon-white.png`} alt="PathToDev Icon" className="w-full h-full object-contain" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-sm sm:text-base font-bold text-white leading-tight truncate">
