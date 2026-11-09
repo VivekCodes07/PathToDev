@@ -11,7 +11,7 @@ interface ContactProps {
 
 export const Contact: React.FC<ContactProps> = ({ selectedServiceTitle, onOpenPaymentInfo }) => {
   return (
-    <section id="contact" className="section-py bg-brand-blue-light/50 relative border-t border-slate-100">
+    <section id="contact" className="contact-section-transition relative border-t border-slate-100">
       <div className="container">
         <SectionHeading
           badge="Get in Touch"

@@ -63,16 +63,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
   const activeSocials = socialPlatforms.filter(p => typeof p.url === 'string' && p.url.trim() !== '');
 
   return (
-    <footer className="bg-brand-navy text-white pt-14 pb-12 sm:pt-16 sm:pb-14 border-t border-slate-800/90 relative overflow-hidden">
+    <footer className="bg-brand-navy text-white pt-16 pb-12 relative overflow-hidden">
       {/* Subtle top ambient glow for depth */}
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-24 bg-brand-blue/5 blur-3xl pointer-events-none" 
         aria-hidden="true" 
       />
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container relative z-10">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8 xl:gap-10 pb-12 sm:pb-14 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8 xl:gap-10 pb-12 border-b border-slate-800/80">
           
           {/* Brand Info (Cols 1-2 on desktop, 1 on tablet/mobile) */}
           <div className="lg:col-span-2 space-y-4">
