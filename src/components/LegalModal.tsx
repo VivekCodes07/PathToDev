@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { X, Shield, FileText } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Shield, FileText, RotateCcw } from 'lucide-react';
 import { SITE_CONFIG } from '../config/site';
 
 interface LegalModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultTab?: 'privacy' | 'terms';
+  defaultTab?: 'privacy' | 'terms' | 'refund';
 }
 
 export const LegalModal: React.FC<LegalModalProps> = ({
@@ -13,7 +13,13 @@ export const LegalModal: React.FC<LegalModalProps> = ({
   onClose,
   defaultTab = 'privacy'
 }) => {
-  const [activeTab, setActiveTab] = useState<'privacy' | 'terms'>(defaultTab);
+  const [activeTab, setActiveTab] = useState<'privacy' | 'terms' | 'refund'>(defaultTab);
+
+  useEffect(() => {
+    if (isOpen) {
+      setActiveTab(defaultTab);
+    }
+  }, [defaultTab, isOpen]);
 
   if (!isOpen) return null;
 
@@ -29,15 +35,17 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         <div className="p-6 bg-brand-navy text-white flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-white/10 rounded-xl">
-              {activeTab === 'privacy' ? (
-                <Shield className="w-5 h-5 text-brand-blue" />
-              ) : (
-                <FileText className="w-5 h-5 text-brand-blue" />
-              )}
+              {activeTab === 'privacy' && <Shield className="w-5 h-5 text-brand-blue" />}
+              {activeTab === 'terms' && <FileText className="w-5 h-5 text-brand-blue" />}
+              {activeTab === 'refund' && <RotateCcw className="w-5 h-5 text-brand-blue" />}
             </div>
             <div>
               <h3 id="legal-modal-title" className="text-xl font-bold text-white">
-                {activeTab === 'privacy' ? 'Privacy Policy' : 'Terms & Conditions'}
+                {activeTab === 'privacy'
+                  ? 'Privacy Policy'
+                  : activeTab === 'terms'
+                  ? 'Terms & Conditions'
+                  : 'Refund Policy'}
               </h3>
               <p className="text-xs text-slate-300">PathToDev Developer Guidance</p>
             </div>
@@ -53,11 +61,11 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex border-b border-slate-200 bg-slate-50 px-6 pt-3 gap-4">
+        <div className="flex border-b border-slate-200 bg-slate-50 px-6 pt-3 gap-2 sm:gap-4 overflow-x-auto">
           <button
             type="button"
             onClick={() => setActiveTab('privacy')}
-            className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
+            className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap ${
               activeTab === 'privacy'
                 ? 'border-brand-blue text-brand-blue'
                 : 'border-transparent text-slate-500 hover:text-brand-navy'
@@ -68,7 +76,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('terms')}
-            className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
+            className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap ${
               activeTab === 'terms'
                 ? 'border-brand-blue text-brand-blue'
                 : 'border-transparent text-slate-500 hover:text-brand-navy'
@@ -76,16 +84,27 @@ export const LegalModal: React.FC<LegalModalProps> = ({
           >
             Terms & Conditions
           </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('refund')}
+            className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap ${
+              activeTab === 'refund'
+                ? 'border-brand-blue text-brand-blue'
+                : 'border-transparent text-slate-500 hover:text-brand-navy'
+            }`}
+          >
+            Refund Policy
+          </button>
         </div>
 
         {/* Document Content */}
         <div className="p-6 overflow-y-auto space-y-6 text-sm text-brand-dark/90 leading-relaxed font-sans">
-          {activeTab === 'privacy' ? (
+          {activeTab === 'privacy' && (
             <div className="space-y-4">
               <div>
                 <h4 className="font-bold text-brand-navy mb-1 text-base">1. Information We Collect</h4>
                 <p>
-                  PathToDev collects information that you voluntarily provide when enquiring about or booking our developer guidance services. This includes your name, email address, academic background, current programming skill level, and stated technical interests.
+                  PathToDev collects information that you voluntarily provide when enquiring about or booking our developer guidance services. This includes your name, email address, WhatsApp number (if provided), academic background, current programming skill level, and stated technical interests.
                 </p>
               </div>
 
@@ -99,7 +118,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
               <div>
                 <h4 className="font-bold text-brand-navy mb-1 text-base">3. Communication Channels</h4>
                 <p>
-                  Communication takes place directly via WhatsApp and official email ({SITE_CONFIG.officialEmail}). We respect your privacy and communicate only with respect to your active guidance request.
+                  Communication takes place directly via WhatsApp ({SITE_CONFIG.WHATSAPP_DISPLAY}) and official email ({SITE_CONFIG.officialEmail}). We respect your privacy and communicate only with respect to your active guidance request.
                 </p>
               </div>
 
@@ -110,7 +129,9 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 </p>
               </div>
             </div>
-          ) : (
+          )}
+
+          {activeTab === 'terms' && (
             <div className="space-y-4">
               <div>
                 <h4 className="font-bold text-brand-navy mb-1 text-base">1. Nature of Service</h4>
@@ -137,6 +158,31 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 <h4 className="font-bold text-brand-navy mb-1 text-base">4. Payments & Refunds</h4>
                 <p>
                   All guidance services are one-time payments conducted manually via UPI. Because custom roadmaps and mentor call preparation require dedicated individual analysis, payments are generally non-refundable once preparation has begun.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'refund' && (
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-bold text-brand-navy mb-1 text-base">1. Payment & Refund Policy</h4>
+                <p>
+                  All guidance services are one-time payments conducted manually via UPI. Because custom roadmaps and mentor call preparation require dedicated individual analysis, payments are generally non-refundable once preparation has begun.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-brand-navy mb-1 text-base">2. Cancellations & Rescheduling</h4>
+                <p>
+                  Separate cancellation and rescheduling conditions are not currently specified in the published policy. If your plans change or you require clarification regarding a scheduled consultation or roadmap preparation, please contact PathToDev directly before proceeding with payment or booking.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-brand-navy mb-1 text-base">3. Enquiries & Support</h4>
+                <p>
+                  For any payment-related questions or service clarifications prior to confirming your guidance slot, reach out directly through WhatsApp ({SITE_CONFIG.WHATSAPP_DISPLAY}) or via email at {SITE_CONFIG.officialEmail}.
                 </p>
               </div>
             </div>

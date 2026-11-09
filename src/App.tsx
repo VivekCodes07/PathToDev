@@ -22,7 +22,7 @@ export const App: React.FC = () => {
   const [selectedServiceForPayment, setSelectedServiceForPayment] = useState<ServiceItem | null>(null);
 
   const [legalModalOpen, setLegalModalOpen] = useState(false);
-  const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms'>('privacy');
+  const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | 'refund'>('privacy');
 
   const [selectedServiceTitle, setSelectedServiceTitle] = useState<string>('');
 
@@ -49,6 +49,11 @@ export const App: React.FC = () => {
 
   const handleOpenTerms = () => {
     setLegalModalTab('terms');
+    setLegalModalOpen(true);
+  };
+
+  const handleOpenRefund = () => {
+    setLegalModalTab('refund');
     setLegalModalOpen(true);
   };
 
@@ -98,6 +103,7 @@ export const App: React.FC = () => {
       <Footer
         onOpenPrivacy={handleOpenPrivacy}
         onOpenTerms={handleOpenTerms}
+        onOpenRefund={handleOpenRefund}
       />
 
       {/* Floating WhatsApp Action Widget */}
