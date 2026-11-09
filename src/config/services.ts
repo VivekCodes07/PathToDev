@@ -116,7 +116,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       "Zero idea what companies actually expect",
       "Anxiety about AI replacing developers"
     ],
-    icon: "HelpCircle"
+    icon: "HelpCircle",
+    insight: "Where 80% of self-learners get stuck for months."
   },
   {
     step: 2,
@@ -129,7 +130,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       "Targeted focus on one viable track (e.g. Frontend / Backend)",
       "Realistic timeline built around your academic life"
     ],
-    icon: "Compass"
+    icon: "Compass",
+    insight: "Where PathToDev provides targeted clarity."
   },
   {
     step: 3,
@@ -142,7 +144,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       "High-signal documentation & resources",
       "Consistent daily 1-2 hour study blueprint"
     ],
-    icon: "BookOpen"
+    icon: "BookOpen",
+    insight: "Where daily consistency replaces endless tutorials."
   },
   {
     step: 4,
@@ -155,7 +158,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       "Proper Git & GitHub version control habits",
       "Clear documentation and deployable demos"
     ],
-    icon: "Code2"
+    icon: "Code2",
+    insight: "Where portfolio-grade software takes shape."
   },
   {
     step: 5,
@@ -168,7 +172,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       "Clean showcase portfolio ready for review",
       "Clear roadmap for continuous growth"
     ],
-    icon: "TrendingUp"
+    icon: "TrendingUp",
+    insight: "Where authentic competence opens real career doors."
   }
 ];
 

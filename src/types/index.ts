@@ -30,6 +30,7 @@ export interface JourneyStage {
   state: 'problem' | 'transition' | 'active' | 'outcome';
   keyPoints: string[];
   icon: string;
+  insight: string;
 }
 
 export interface StepItem {
